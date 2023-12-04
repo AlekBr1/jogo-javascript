@@ -1,8 +1,12 @@
 import * as Phaser from 'phaser';
 import { craetePlayer, loadSprites } from "./player";
+import { craeteControls, configControls } from './controls';
 
 export default class Demo extends Phaser.Scene {
     player;
+    controls;
+
+
     constructor () {
         super('demo');
     }
@@ -25,6 +29,12 @@ export default class Demo extends Phaser.Scene {
      this.player = craetePlayer(this);
      
      this.player.anims.play("player_idle", true);
+
+     this.controls = craeteControls(this);
+    }
+
+    update() {
+        configControls(this.player, this.controls, this);
     }
 };
 const config = {
