@@ -26,7 +26,7 @@ export default class Demo extends Phaser.Scene {
      
      this.player.anims.play("player_idle", true);
     }
-
+};
 const config = {
     type: Phaser.AUTO,
     backgroundColor: '#125555',
