@@ -1,6 +1,12 @@
+import { Plugins } from "phaser";
+
+export interface Player extends Phaser.Physics.Arcade.Sprite {
+    isCollect?: boolean;
+}
+
 export const craetePlayer = (scene: Phaser.Scene) => {
     const player = scene.physics.add.sprite(200, 200, 'player_idle');
-    createAnimations(scene);
+    createAnimations(scene, player);
     return player;
 }   
 
@@ -17,14 +23,14 @@ export const loadSprites = (scene: Phaser.Scene) : void => {
         spacing: 45,
     });
 
-    scene.load.spritesheet('player_colect', 'local e a img do perso colect.png',{
+    scene.load.spritesheet('player_collect', 'local e a img do perso colect.png',{
         frameWidth: 83,
         frameHeight: 64,
         spacing: 45,
     });
 };
 
-export const createAnimations = (scene: Phaser.Scene) : void => {
+export const createAnimations = (scene: Phaser.Scene, player: Player): void => {
     scene.anims.create({
         key: 'player_idle',
          frames: scene.anims.generateFrameNames('player_idle', {
@@ -48,8 +54,8 @@ export const createAnimations = (scene: Phaser.Scene) : void => {
     });
 
     scene.anims.create({
-        key: 'player_colect',
-         frames: scene.anims.generateFrameNames('player_colect', {
+        key: 'player_collect',
+         frames: scene.anims.generateFrameNames('player_collect', {
             start: 0,
             end: 4,
          }),
@@ -57,4 +63,10 @@ export const createAnimations = (scene: Phaser.Scene) : void => {
          repeat: 0,
          yoyo: false
     });
+
+    player.on('animationcomplete', function(animation){
+        if (animation.key === 'player_collect'){
+            player.isCollect = false;
+        };
+    }, scene)
 } 

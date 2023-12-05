@@ -5,6 +5,7 @@ import { craeteControls, configControls } from './controls';
 export default class Demo extends Phaser.Scene {
     player;
     controls;
+    stone;
 
 
     constructor () {
@@ -21,13 +22,16 @@ export default class Demo extends Phaser.Scene {
     create () {
      const map = this.make.tilemap({key: "map"});
      const tilesetGlass = map.addTilesetImage("grass", "tiles");
-     const tilesetWater = map.addTilesetImage("water", "border");
+     const tilesetStone = map.addTilesetImage("stone", "border");
 
      const ground = map.createLayer('grass', tilesetGlass, 0, 0);
-     const water = map.createLayer('water', tilesetWater, 0, 0);
+     this.stone = map.createLayer('stone', tilesetStone, 0, 0);
+
+     this.stone.setCollisionByProperty({ collider: true});
 
      this.player = craetePlayer(this);
-     
+     this.physics.add.collider(this.player, this.stone);
+
      this.player.anims.play("player_idle", true);
 
      this.controls = craeteControls(this);

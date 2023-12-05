@@ -1,3 +1,5 @@
+import { Player } from "./player";
+
 export const craeteControls = (
     scene: Phaser.Scene
 ): Phaser.Types.Input.Keyboard.CursorKeys => {
@@ -5,12 +7,12 @@ export const craeteControls = (
 };
 
 export const configControls = (
-    player,
+    player: Player,
     controls: Phaser.Types.Input.Keyboard.CursorKeys,
     scene: Phaser.Scene
 ): void => {
-    player.steVelocityX(0);
-    player.steVelocityY(0);
+    player.setVelocityX(0);
+    player.setVelocityY(0);
 
     if (controls.right.isDown) {
         moveRight(player);
@@ -33,7 +35,9 @@ export const configControls = (
     }
 
     if (controls.space.isDown) {
-        collect(player);
+        if (!player.isCollect){
+            collect(player);
+        };
         return;
     }
     
@@ -45,25 +49,26 @@ const defaultVelocity = 200;
 const moveRight = (player): void =>{
     player.setflipx(false);
     player.anims.play('player_walk', true);
-    player.steVelocityX(defaultVelocity);
+    player.setVelocityX(defaultVelocity);
 };
 
 const moveLeft = (player): void =>{
     player.setflipx(true);
     player.anims.play('player_walk', true);
-    player.steVelocityX(-defaultVelocity)
+    player.setVelocityX(-defaultVelocity)
 };
 
 const moveUp = (player): void => {
     player.anims.play('player_walk', true);
-    player.steVelocityY(-defaultVelocity);
+    player.setVelocityY(-defaultVelocity);
 };
 
 const moveDown = (player): void => {
     player.anims.play('player_walk', true);
-    player.steVelocityY(defaultVelocity);
+    player.setVelocityY(defaultVelocity);
 };
 
-const collect = (player): void => {
+const collect = (player: Player): void => { 
+    player.isCollect = true;
     player.anims.play('player_collect', true);
 }
