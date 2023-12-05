@@ -1,5 +1,5 @@
 import * as Phaser from 'phaser';
-import { craetePlayer, loadSprites } from "./player";
+import { craetePlayer, loadPlayerSprites } from "./player";
 import { craeteControls, configControls } from './controls';
 
 export default class Demo extends Phaser.Scene {
@@ -16,7 +16,7 @@ export default class Demo extends Phaser.Scene {
         this.load.image('', 'assets/');
         this.load.image('', 'assets/');
         this.load.glsl('', 'assets/');
-        loadSprites(this);
+        loadPlayerSprites(this);
     }
 
     create () {

@@ -1,4 +1,4 @@
-import { Plugins } from "phaser";
+// import { Plugins } from 'phaser';
 
 export interface Player extends Phaser.Physics.Arcade.Sprite {
     isCollect?: boolean;
@@ -10,8 +10,8 @@ export const craetePlayer = (scene: Phaser.Scene) => {
     return player;
 }   
 
-export const loadSprites = (scene: Phaser.Scene) : void => {
-    scene.load.spritesheet('player_idle', 'local e a img do perso idle.png',{    
+export const loadPlayerSprites = (scene: Phaser.Scene) : void => {
+    scene.load.spritesheet('player_idle', './assets/player/idle.png',{    
         frameWidth: 83,
         frameHeight: 64,
         spacing: 45,
