@@ -1,4 +1,4 @@
-// import { Plugins } from 'phaser';
+import { Plugins } from 'phaser';
 
 export interface Player extends Phaser.Physics.Arcade.Sprite {
     isCollect?: boolean;
