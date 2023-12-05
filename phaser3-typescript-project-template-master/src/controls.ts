@@ -41,7 +41,9 @@ export const configControls = (
         return;
     }
     
+    if (!player.isCollect){
     player.anims.play("player_idle", true);
+    }
 };
 
 const defaultVelocity = 200;
