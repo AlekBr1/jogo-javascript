@@ -4,7 +4,7 @@ export interface Player extends Phaser.Physics.Arcade.Sprite {
     // isCollect?: boolean;
 }
 
-export const craetePlayer = (scene: Phaser.Scene) => {
+export const createPlayer = (scene: Phaser.Scene) => {
     const player = scene.physics.add.sprite(200, 200, 'player_idle');
     createAnimations(scene);
     return player;
