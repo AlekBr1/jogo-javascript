@@ -1,43 +1,44 @@
 import * as Phaser from "phaser";
 
 export interface Player extends Phaser.Physics.Arcade.Sprite {
-    isCollect?: boolean;
+    // isCollect?: boolean;
 }
 
 export const craetePlayer = (scene: Phaser.Scene) => {
     const player = scene.physics.add.sprite(200, 200, 'player_idle');
-    createAnimations(scene, player);
+    createAnimations(scene);
     return player;
 }   
 
-export const loadPlayerSprites = (scene: Phaser.Scene) : void => {
-    scene.load.spritesheet('player_idle', './assets/player/idle.png',{    
+export const loadSprites = (scene: Phaser.Scene) : void => {
+    scene.load.spritesheet('player_idle', "./assets/player/player_idle.png",{    
+        frameWidth: 83,
+        frameHeight: 64,
+        spacing: 45,
+    }
+    );
+
+    scene.load.spritesheet('player_walk', "./assets/player/walk.png",{
         frameWidth: 83,
         frameHeight: 64,
         spacing: 45,
     });
 
-    scene.load.spritesheet('player_walk', 'local e a img do perso walk.png',{
-        frameWidth: 83,
-        frameHeight: 64,
-        spacing: 45,
-    });
-
-    scene.load.spritesheet('player_collect', 'local e a img do perso colect.png',{
+    scene.load.spritesheet('player_collect', "./assets/player/attack.png",{
         frameWidth: 83,
         frameHeight: 64,
         spacing: 45,
     });
 };
 
-export const createAnimations = (scene: Phaser.Scene, player: Player): void => {
+export const createAnimations = (scene: Phaser.Scene): void => {
     scene.anims.create({
         key: 'player_idle',
          frames: scene.anims.generateFrameNames('player_idle', {
             start: 0,
-            end: 2,
+            end: 7,
          }),
-         frameRate: 6,
+         frameRate: 8,
          repeat: -1,
          yoyo: true
     });
@@ -46,7 +47,7 @@ export const createAnimations = (scene: Phaser.Scene, player: Player): void => {
         key: 'player_walk',
          frames: scene.anims.generateFrameNames('player_walk', {
             start: 0,
-            end: 2,
+            end: 6,
          }),
          frameRate: 6,
          repeat: -1,
@@ -57,16 +58,16 @@ export const createAnimations = (scene: Phaser.Scene, player: Player): void => {
         key: 'player_collect',
          frames: scene.anims.generateFrameNames('player_collect', {
             start: 0,
-            end: 4,
+            end: 3,
          }),
          frameRate: 6,
          repeat: 0,
          yoyo: false
     });
 
-    player.on('animationcomplete', function(animation){
-        if (animation.key === 'player_collect'){
-            player.isCollect = false;
-        };
-    }, scene)
+    // player.on('animationcomplete', function(animation){
+    //     if (animation.key === 'player_collect'){
+    //         player.isCollect = false;
+    //     };
+    // }, scene)
 } 
