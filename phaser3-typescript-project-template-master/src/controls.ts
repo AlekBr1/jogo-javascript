@@ -46,17 +46,17 @@ const attack = (player): void => {
     player.anims.play('player_attack', true);
 }
 
-const defaultVelocity = 200;
+const defaultVelocity = 150;
 const moveRight = (player): void =>{
     player.setFlipX(false);
     player.anims.play('player_walk', true);
-    player.setVelocityX(defaultVelocity);
+    player.setVelocityX(-defaultVelocity);
 };
 
 const moveLeft = (player): void => {
     player.setFlipX(true);
     player.anims.play('player_walk', true);
-    player.setVelocityX(-defaultVelocity)
+    player.setVelocityX(defaultVelocity)
 };
 
 const moveUp = (player): void => {

@@ -10,9 +10,9 @@ export const createPlayer = (scene: Phaser.Scene) => {
 
 export const loadSprites = (scene: Phaser.Scene): void => {
   scene.load.spritesheet("player_idle", "./assets/player/idle.png", {
-    frameWidth: 83,
+    frameWidth: 96.55,
     frameHeight: 64,
-    spacing: 45,
+    spacing: 36.5,
   });
 
   scene.load.spritesheet("player_walk", "./assets/player/walk.png", {
@@ -33,9 +33,9 @@ export const createAnimations = (scene: Phaser.Scene, player: Player): void => {
     key: "player_idle",
     frames: scene.anims.generateFrameNames("player_idle", {
       start: 0,
-      end: 7,
+      end: 8,
     }),
-    frameRate: 8,
+    frameRate: 7,
     repeat: -1,
     yoyo: true,
   });

@@ -26,14 +26,10 @@ export default class Demo extends Phaser.Scene {
     const ground = map.createLayer("grass", tilesetGrass, 0, 0);
     this.water = map.createLayer("water", tilesetWater, 0, 0);
 
-    this.water.setCollisionByProperty({ collider: true });
-
+    // this.water.setCollisionByProperty({collider:true});
+    // this.physics.add.collider(this.player, this.water);
     this.player = createPlayer(this);
-
-    this.physics.add.collider(this.player, this.water);
-
     this.player.anims.play("player_idle", true);
-
     this.controls = craeteControls(this);
   
   }
