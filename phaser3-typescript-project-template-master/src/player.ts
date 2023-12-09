@@ -3,22 +3,22 @@ export interface Player extends Phaser.Physics.Arcade.Sprite {
 }
 
 export const createPlayer = (scene: Phaser.Scene) => {
-  const player = scene.physics.add.sprite(200, 200, "player_idle");
+  const player = scene.physics.add.sprite(40, 100, "player_idle");
   createAnimations(scene, player);
   return player;
 };
 
 export const loadSprites = (scene: Phaser.Scene): void => {
-  scene.load.spritesheet("player_idle", "./assets/player/idle.png", {
-    frameWidth: 96.55,
-    frameHeight: 64,
-    spacing: 36.5,
+  scene.load.spritesheet("player_idle", "./assets/player/idle2.png", {
+    frameWidth: 37.3,
+    frameHeight: 24,
+    spacing: 12.5,
   });
 
   scene.load.spritesheet("player_walk", "./assets/player/walk.png", {
-    frameWidth: 83,
-    frameHeight: 64,
-    spacing: 45,
+    frameWidth: 37.3,
+    frameHeight: 24,
+    spacing: 12.5,
   });
 
   scene.load.spritesheet("player_attack", "./assets/player/attack.png", {
